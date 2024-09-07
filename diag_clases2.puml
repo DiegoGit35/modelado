@@ -1,0 +1,34 @@
+@startuml
+
+class Usuario {}
+
+class Reserva {}
+
+class Cabana {}
+
+class Favoritos {}
+
+class Comentario {}
+
+class Valoracion {}
+
+class Pago {}
+
+class HistorialRolUsuario {}
+
+class Rol {}
+
+class PermisoDeRol {}
+
+class Temporada {}
+
+class HistorialPrecioCabana {}
+
+class Senia {}
+
+class Grupo {}
+
+class Oferta {}
+
+class HitorialOfertas {}
+@enduml

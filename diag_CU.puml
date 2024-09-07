@@ -1,0 +1,28 @@
+@startuml
+:Administrador: as adm
+' usecase "consultar cabañas vacantes" as uc1
+
+:Usuario: as usr
+usecase "iniciar sesion" as uc1
+usecase "buscar cabañas" as uc2
+' usecase "seleccionar rango de fecha" as uc3
+usecase "ver cabaña" as uc4
+usecase "añádir a favoritos" as uc5
+usecase "reservar cabaña" as uc6
+usecase "ver favoritos" as uc7
+usecase "ver historial de reservas" as uc8
+
+
+
+
+
+usr --> uc1
+usr --> uc2
+usr --> uc4
+usr --> uc5
+usr --> uc6
+usr --> uc7
+usr --> uc8
+
+adm --> usr
+@enduml

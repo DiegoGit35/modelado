@@ -1,0 +1,106 @@
+@startuml
+class Empresa {
+    +nombre: String
+    +direccion: String
+    +consultarCabana(periodo: Periodo): List<Cabana>
+}
+
+class Cabana {
+    +id: int
+    +nombre: String
+    +ubicacion: String
+    +numPersonas: int
+    +numHabitaciones: int
+    +numBanos: int
+    +fotos: List<Foto>
+    +precioPorDia: double
+    +precioPorSemana: double
+    ' +disponibilidad: List<Periodo>
+    +temporadas: List<Temporada>
+    +ofertas: List<Oferta>
+    ' +propietario: Propietario
+    +consultarDisponibilidad(periodo: Periodo): boolean
+}
+
+class Temporada {
+    +nombre: String
+    +precioAlta: double
+    +precioBaja: double
+    +configurarTemporada(): void
+}
+
+class Oferta {
+    +descuento: double
+    +fechaInicio: Date
+    +fechaFin: Date
+}
+
+class Foto {
+    +ruta: String
+    +descripcion: String
+}
+
+class Reserva {
+    +id: int
+    +fechaInicio: Date
+    +fechaFin: Date
+    +totalPago: double
+    +estado: String
+    +realizarPago(seña: double): boolean
+    +cancelarReserva(): boolean
+}
+
+class Cliente {
+    +nombre: String
+    +email: String
+    +telefono: String
+    +realizarReserva(cabanas: List<Cabana>, periodo: Periodo): Reserva
+    +valorarCabana(cabana: Cabana, valoracion: Valoracion): void
+}
+
+class Valoracion {
+    +numEstrellas: int
+    +comentarios: String
+    +aspectos: Map<String, int>
+    +validada: boolean
+    +validar(): void
+}
+
+' class Administrador {
+'     +validarComentario(valoracion: Valoracion): void
+' }
+
+' class Propietario {
+'     +nombre: String
+'     +email: String
+'     +consultarReservas(): List<Reserva>
+'     +consultarValoraciones(): List<Valoracion>
+' }
+
+class Pago {
+    +tipo: String
+    +monto: double
+    +confirmarPago(): boolean
+}
+
+' class Periodo {
+'     +fechaInicio: Date
+'     +fechaFin: Date
+' }
+
+Empresa "1..1" -- "0..*" Cabana
+Cabana "1..1" -- "0..*" Foto
+Cabana "0..*" -- "0..1" Temporada
+Cabana "0..*" -- "0..1" Oferta
+' Cabana -- Propietario
+Reserva "0..*" -- "1..*" Cabana
+Reserva "0..1" -- "1..1" Cliente
+Reserva "1..1" -- "1..1" Pago
+' Cliente "1..1" -- "0..*" Reserva
+Cliente "1..1" -- "0..*" Valoracion
+' Valoracion "" -- Administrador
+' Propietario "" -- Reserva
+' Propietario -- Valoracion
+
+
+@enduml
