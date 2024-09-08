@@ -6,7 +6,7 @@ class Reserva {}
 
 class Cabana {}
 
-class Favoritos {}
+' class Favoritos {}
 
 class Comentario {}
 
@@ -26,9 +26,26 @@ class HistorialPrecioCabana {}
 
 class Senia {}
 
-class Grupo {}
+' class Grupo {}
 
 class Oferta {}
 
-class HitorialOfertas {}
+class HistorialOfertas {}
+
+Usuario "1" -- "0..*" Reserva : hace
+' Usuario -- Favoritos
+Usuario -- HistorialRolUsuario
+HistorialRolUsuario -- Rol
+Rol -- PermisoDeRol
+Reserva "1" -- "1" Pago 
+Reserva "1" -- "1" Senia
+' Reserva -- Grupo
+Cabana "1..*" --> "0..*" Reserva : tiene
+Cabana -- Temporada
+Cabana -- HistorialPrecioCabana
+Cabana -- Oferta
+Cabana -- Valoracion
+Cabana -- Comentario
+Oferta -- HistorialOfertas 
+
 @enduml
